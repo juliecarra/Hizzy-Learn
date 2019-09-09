@@ -609,6 +609,16 @@ hr {
   font-family: "Lato", sans-serif;
 }
 
+.about__packages__split {
+  border-bottom: 1px solid #bdb4a3;
+  width: 65%;
+  margin-left: 205px;
+}
+
+.heading__title__move {
+  margin-bottom: -330px;
+}
+
 .heading-secondary {
   font-size: 3.5rem;
   text-transform: uppercase;
@@ -628,6 +638,10 @@ hr {
 
 .margin-bottom-big {
   margin-bottom: 8rem;
+}
+
+.packages__grey {
+  color: #4c4e4f;
 }
 
 /*Grid */
@@ -661,6 +675,10 @@ hr {
 
 .paragraph {
   font-size: 1.6rem;
+  color: #4c4e4f;
+
+  font-weight: 900;
+  font-style: italic;
 }
 
 .margin-bottom-small {
@@ -688,4 +706,50 @@ hr {
 .btn-text:active {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   transform: translateY(0px);
+}
+
+/*SECTION PACKAGES STYLES */
+
+.section-packages {
+  background-color: #e0d6c0;
+  padding: 25rem 0 50rem 0;
+  margin: 0%;
+}
+
+.heading__packages__style {
+  font-family: "Lato", sans-serif;
+  color: #4c4e4f;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.starter-text {
+  font-family: "Lato", sans-serif;
+  color: #e0d6c0;
+}
+
+.card {
+  perspective: 150rem;
+  background-color: #e0d6c0;
+  border: none;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+}
+
+.card__side {
+  background-color: #a89565;
+  height: 50rem;
+  transition: all 0.5s;
+  width: 320px;
+  height: 440px;
+}
+
+.card__side:hover {
+  transform: rotateY(180deg);
+}
+
+.margin__left {
+  margin-right: 50px;
 }
