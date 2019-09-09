@@ -1,0 +1,21 @@
+{{#if user}}
+<h1 class="welcome__msg">Welcome to Juloup app<span class="bold__grey">{{user.username}}</span></h1>
+{{/if}}
+
+
+{{#if user.profilePhoto}}
+<img src="{{user.profilePhoto}}" class="profileImg" />
+{{else}}
+{{!-- <img src="https://media3.giphy.com/media/113PoJxEaRxKbm/giphy.gif?cid=3640f6095bff0b91325859656f15cb72" alt=""> --}}
+<h2>No profile picture! <br> Please upload your photo</h2>
+{{/if}}
+<form id="photoForm" action="/upload" method="post" enctype="multipart/form-data">
+  <div class="photoBox"><input type="file" name="photo" class="photoInput" onchange="fileSelect(event)"><span
+      class="fileName">Click here to select the profile picture</span></div>
+  <button type="submit" class="saveBut">Save</button>
+</form>
+{{#if message }}
+<div class="error-message w50">{{message}}</div>
+{{/if}}
+<h1>{{user.username}}</h1>
+<p class="userDescription">Profile description.</p>

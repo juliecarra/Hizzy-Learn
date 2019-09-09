@@ -1,0 +1,31 @@
+<div class="navigation">
+
+    <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+    <label for="navi-toggle" class="navigation__button">
+        <span class="navigation__icon">&nbsp;</span>
+
+    </label>
+    <div class="navigation__background">&nbsp;</div>
+
+    <nav class="navigation__nav">
+        <ul class="navigation__list">
+            <li class="navigation__item"><a href="/" class="navigation__link"><span>01</span> Home</a></li>
+            <li class="navigation__item"><a href="#" class="navigation__link"><span>02</span> Undefined yet</a></li>
+            <li class="navigation__item"><a href="#" class="navigation__link"><span>03</span> Undefined yet</a></li>
+            <li class="navigation__item"><a href="#" class="navigation__link"><span>04</span> Undefined yet</a></li>
+            <li class="navigation__item"><a href="#" class="navigation__link"><span>05</span> Undefined yet</a></li>
+            <ul>
+                {{#if user}}
+
+                <li class="navigation__item"><a href="/profile" class="navigation__link">Profile</a></li>
+                <li class="navigation__item"><a href="/logout" class="navigation__link">Logout</a></li>
+                {{else}}
+                <li class="navigation__item"><a href="/signup" class="navigation__link">Signup</a></li>
+                <li class="navigation__item"><a href="/login" class="navigation__link">Login</a></li>
+                {{/if}}
+            </ul>
+
+
+        </ul>
+
+    </nav>

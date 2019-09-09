@@ -1,0 +1,31 @@
+<div class="wrap__signup">
+  <h2 class="title__signup">Signup</h2>
+  <div class="">
+    <div class="">
+      <form action="/signup" method="post" id="form-container">
+        <div class="form__group">
+          <label for="username" class="signup__label">Username</label>
+          <input type="text" name="username" class="input__signup" placeholder="Enter your username">
+        </div>
+        <hr>
+        <div class="form__group">
+          <label for="email" class="signup__label">Email</label>
+          <input type="text" name="email" class="input__signup" id="email__margin" placeholder="Enter your email">
+        </div>
+        <hr>
+        <div class="form__group">
+          <label for="password" class="signup__label">Password</label>
+          <input type="password" name="password" class="input__signup" placeholder="Enter your password" />
+        </div>
+        <hr>
+
+        <div class="wrap__button">
+          <button class="signup__button" type="submit">Signup</button>
+        </div>
+        {{#if message }}
+        <div class="error__message">{{message}}</div>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+</div>

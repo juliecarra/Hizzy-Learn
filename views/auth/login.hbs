@@ -1,0 +1,22 @@
+<div class="wrap__login">
+    <h2 class="title__login">Login</h2>
+    <form action="/login" method="post" id="form-container">
+        <div class="form__group">
+            <label for="username" class="login__label">Username</label>
+            <input type="text" name="username" class="input__login" placeholder="Enter your username">
+            <hr>
+        </div>
+        <div class="form__group">
+            <label for="password" class="login__label">Password</label>
+            <input type="password" name="password" class="input__login" placeholder="Enter your password" />
+            <hr>
+        </div>
+        <div class="wrap__button">
+            <button class="login__button" type="submit">Login</button>
+        </div>
+        {{#if message}}
+        <div class="error__message">{{message}}</div>
+        {{/if}}
+    </form>
+
+</div>
