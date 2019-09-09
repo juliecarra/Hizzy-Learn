@@ -5,7 +5,9 @@ const VideoSchema = new Schema({
   name: String,
   url: { type: String, required: true },
   difficulty_tag: String,
-  order_tag: Number
+  order_tag: Number,
+  front_end: Boolean,
+  back_end: Boolean
 });
 
 const videoModel = mongoose.model("videos", VideoSchema);

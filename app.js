@@ -152,8 +152,10 @@ app.locals.title = "Welcome to juloup app";
 
 const index = require("./routes/index");
 const authRoutes = require("./routes/auth");
+const manageVideos = require("./routes/video_manage");
 app.use("/", index);
 app.use("/", authRoutes);
+app.use("/", manageVideos);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
