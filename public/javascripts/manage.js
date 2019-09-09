@@ -1,21 +1,22 @@
 const axiosHandler = axios.create({
   baseURL: "http://localhost:3000"
 });
+console.log("coucou");
 
 function deleteVideo(evt) {
-  const videoId = evt.target.dataset.idvideo;
+  const videoId = evt.target.dataset.idVideo;
   console.log(evt.target);
-  // axiosHandler
-  //   .delete(`/product-delete/${videoId}`)
-  //   .then(res => {
-  //     const deleteRow = document.getElementById(videoId);
-  //     deleteRow.parentNode.removeChild(deleteRow);
-  //   })
-  //   .catch(err => console.log("This is the err response :", err));
+  axiosHandler
+    .delete(`/video-delete/${videoId}`)
+    .then(res => {
+      const deleteRow = document.getElementById(videoId);
+      deleteRow.parentNode.removeChild(deleteRow);
+    })
+    .catch(err => console.log("This is the err response :", err));
 }
 
-const videoBins = document.getElementsByClassName("fa-trash");
+const videoDeleteButtons = document.getElementsByClassName("delete-icon");
 
-for (let element of videoBins) {
-  element.onclick = deletevideo;
+for (let element of videoDeleteButtons) {
+  element.onclick = deleteVideo;
 }

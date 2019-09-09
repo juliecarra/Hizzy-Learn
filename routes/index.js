@@ -19,7 +19,10 @@ router.get("/video-manage", (req, res) => {
   videoModel
     .find()
     .then(dbRes =>
-      res.render("video_manage", { videos: dbRes, script: "manage" })
+      res.render("video_manage", {
+        videos: dbRes,
+        scripts: ["manage.js"]
+      })
     )
     .catch(err => console.log(err));
 });

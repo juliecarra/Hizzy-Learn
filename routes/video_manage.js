@@ -42,7 +42,7 @@ router.post("/video-add", (req, res) => {
 router.delete("/video-delete/:id", (req, res) => {
   console.log("YAY");
   console.log(req.params.id);
-  sneakerModel
+  videoModel
     .findByIdAndRemove(req.params.id)
     .then(dbRes => res.send(dbRes))
     .catch(err => console.log(err));
