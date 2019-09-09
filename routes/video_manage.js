@@ -42,9 +42,21 @@ router.post("/video-add", (req, res) => {
 router.delete("/video-delete/:id", (req, res) => {
   console.log("YAY");
   console.log(req.params.id);
-  sneakerModel
+  videoModel
     .findByIdAndRemove(req.params.id)
     .then(dbRes => res.send(dbRes))
+    .catch(err => console.log(err));
+});
+
+// EDIT VIDEO
+router.get("/video-edit/:id", (req, res) => {
+  console.log(req.params.id);
+  videoModel
+    .findById(req.params.id)
+    .then(dbRes => {
+      console.log(dbRes);
+      res.render("video_edit", { video: dbRes });
+    })
     .catch(err => console.log(err));
 });
 

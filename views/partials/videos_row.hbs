@@ -17,10 +17,12 @@
   <div>{{this.back_end}}</div>
 </td>
 <td class="table-division">
-  <button href="/video-edit/{{this._id}}" dbuttonta-id-sneaker="{{this._id}}"
-    class="fa fa-edit table-icon">Edit</button>
+  <div>{{this._id}}</div>
 </td>
 <td class="table-division">
-  <button href="/video-delete/{{this._id}}" class="fa fa-trash table-icon" data-id-video="{{this._id}}"
+  <a href="/video-edit/{{this._id}}" data-id-video="{{this._id}}" class="fa fa-edit table-icon edit-icon">Edit</a>
+</td>
+<td class="table-division">
+  <button href="/video-delete/{{this._id}}" class="fa fa-trash table-icon delete-icon" data-id-video="{{this._id}}"
     aria-hidden="true">Delete</button>
 </td>
