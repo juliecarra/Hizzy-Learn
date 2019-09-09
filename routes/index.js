@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const videoModel = require("../models/video");
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
@@ -14,4 +15,12 @@ router.get("/video-add", (req, res) => {
   res.render("video_add");
 });
 
+router.get("/video-manage", (req, res) => {
+  videoModel
+    .find()
+    .then(dbRes =>
+      res.render("video_manage", { videos: dbRes, script: "manage" })
+    )
+    .catch(err => console.log(err));
+});
 module.exports = router;

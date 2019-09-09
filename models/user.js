@@ -8,6 +8,6 @@ const UserSchema = Schema({
   profilePhoto: { type: String, default: "" }
 });
 
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model("Users", UserSchema);
 
 module.exports = User;

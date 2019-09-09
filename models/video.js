@@ -5,11 +5,11 @@ const VideoSchema = new Schema({
   name: String,
   url: { type: String, required: true },
   difficulty_tag: String,
-  order_tag: Number,
+  description: String,
   front_end: Boolean,
   back_end: Boolean
 });
 
-const videoModel = mongoose.model("videos", VideoSchema);
+const videoModel = mongoose.model("Videos", VideoSchema);
 
 module.exports = videoModel;

@@ -1,3 +1,6 @@
+{{#if msg}}
+<p>{{msg}}</p>
+{{/if}}
 <form action="/video-add" method="post" id="video-add-form">
   <label for="name">Video name</label>
   <input type="text" name="name" id="video-name" value="toto le héros">
@@ -9,8 +12,8 @@
     <option value="Intermediate">Intermediate</option>
     <option value="Confirmed">Confirmed</option>
   </select>
-  <label for="order_tag">Order</label>
-  <input type="number" name="order_tag" id="order_tag" value="1">
+  <label for="description">Description</label>
+  <input type="text" name="description" id="description" value="Lorem ipsum">
   <label for="front_end">Front end</label>
   <input type="checkbox" name="front_end" id="front_end">
   <label for="back_end">Back end</label>
