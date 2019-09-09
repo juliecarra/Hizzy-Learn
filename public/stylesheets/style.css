@@ -716,13 +716,6 @@ hr {
   margin: 0%;
 }
 
-.heading__packages__style {
-  font-family: "Lato", sans-serif;
-  color: #4c4e4f;
-  font-size: 40px;
-  font-weight: 900;
-}
-
 .starter-text {
   font-family: "Lato", sans-serif;
   color: #e0d6c0;
@@ -752,4 +745,36 @@ hr {
 
 .margin__left {
   margin-right: 50px;
+}
+
+.heading__packages__style {
+  font-family: "Lato", sans-serif;
+  color: #4c4e4f;
+  font-size: 40px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+ul {
+  color: #e0d6c0;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
+}
+
+.bullet__hidden {
+  list-style-type: none;
+}
+.end {
+  color: #4c4e4f;
+  font-weight: 900;
+  font-size: 30px;
+  border-bottom: 2px dashed #4c4c4c;
+  text-align: center;
+}
+
+.fleche {
+  margin-left: 50px;
 }
