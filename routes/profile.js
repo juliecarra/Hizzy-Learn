@@ -1,11 +1,6 @@
-function findProfileById(id) {
-    return User
-      .findById(id)
-      .then(dbRes => dbRes)
-      .catch(err => console.log(err));
-  }
+const express = require("express");
+const router = express.Router();
+const videoModel = require("../models/video");
+const courseModel = require("../models/course");
 
-router.get ("/profile-edit/:id", (req, res) => {
-    const photo = findProfileById(req.params.id)
-
-}
+module.exports = router;

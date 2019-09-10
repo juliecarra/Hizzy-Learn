@@ -14,8 +14,12 @@
             </li>
             <li class="navigation__item"><a href="#" class="navigation__link"><span>03</span> Undefined yet</a>
             </li>
+
+            {{#if isAdmin}}
             <li class="navigation__item"><a href="/manage-all" class="navigation__link"><span>04</span> Manage
                     databases</a></li>
+            {{/if}}
+
             <li class="navigation__item"><a href="#" class="navigation__link"><span>05</span> Undefined yet</a></li>
             <ul>
                 {{#if user}}

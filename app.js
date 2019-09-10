@@ -143,11 +143,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 hbs.registerPartials(__dirname + "/views/partials");
 
+function checkIfAdmin(req, res, next) {
+  if (req.user) {
+    res.locals.isAdmin = req.user.isAdmin;
+  }
+  next();
+}
+
 app.use((req, res, next) => {
   res.locals.user = req.user;
   next();
 });
-
+app.use(checkIfAdmin);
 // default value for title local
 app.locals.title = "Welcome to juloup app";
 
@@ -155,10 +162,12 @@ const index = require("./routes/index");
 const authRoutes = require("./routes/auth");
 const manageVideos = require("./routes/video_manage");
 const manageCourses = require("./routes/course_manage");
+const profile = require("./routes/profile");
 app.use("/", index);
 app.use("/", authRoutes);
 app.use("/", manageVideos);
 app.use("/", manageCourses);
+app.use("/", profile);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
