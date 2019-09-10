@@ -5,6 +5,8 @@ const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 const upload = require("../config/cloudinary");
 const User = require("../models/user");
+const videoModel = require("../models/video");
+const courseModel = require("../models/course");
 
 //auth with passport middleware
 
@@ -40,13 +42,36 @@ router.post(
   })
 );
 
+function findUserVideos(array) {
+  return videoModel
+    .find({ _id: array })
+    .then(dbRes => dbRes)
+    .catch(err => console.log(err));
+}
+function findRemainingVideos(array) {
+  return videoModel
+    .find()
+    .then(dbRes => dbRes)
+    .catch(err => console.log(err));
+}
+
 //ensure that we are logged in with our account, if it's the case, we can have access to the profile page
 router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
   console.log("req user :", req.user);
   console.log("user level: ", req.user.level);
   console.log("user viewed videos: ", req.user.viewed_videos);
-  return;
-  res.render("profile");
+  const userViewedVideos = findUserVideos(req.user.viewed_videos);
+  const userRemainingVideos = findRemainingVideos(req.user.viewed_videos);
+  Promise.all([userViewedVideos, userRemainingVideos])
+    .then(values => {
+      console.log("VALUES 0", values[0]);
+      console.log("VALUES 1", values[1]);
+      res.render("profile", {
+        viewedVideos: values[0],
+        notViewedVideos: values[1]
+      });
+    })
+    .catch(err => console.log(err));
 });
 
 //if we don't upload a profil picture and we click on "save", we have a message that appear "photo field is empty"

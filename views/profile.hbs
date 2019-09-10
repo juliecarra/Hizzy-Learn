@@ -19,3 +19,17 @@
 {{/if}}
 <h1>{{user.username}}</h1>
 <p class="userDescription">Profile description.</p>
+
+{{#if notViewedVideos}}
+<h4>Not viewed videos</h4>
+{{#each notViewedVideos}}
+<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{this.url}}"></iframe>
+{{/each}}
+{{/if}}
+
+{{#if viewedVideos}}
+<h4>Viewed videos</h4>
+{{#each viewedVideos}}
+<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{this.url}}"></iframe>
+{{/each}}
+{{/if}}
