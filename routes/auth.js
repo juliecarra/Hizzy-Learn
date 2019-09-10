@@ -48,7 +48,7 @@ function findUserVideos(array) {
     .then(dbRes => dbRes)
     .catch(err => console.log(err));
 }
-function findRemainingVideos(array) {
+function findAllVideos(array) {
   return videoModel
     .find()
     .then(dbRes => dbRes)
@@ -57,18 +57,33 @@ function findRemainingVideos(array) {
 
 //ensure that we are logged in with our account, if it's the case, we can have access to the profile page
 router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
-  console.log("req user :", req.user);
-  console.log("user level: ", req.user.level);
-  console.log("user viewed videos: ", req.user.viewed_videos);
+  // console.log("req user :", req.user);
+  // console.log("user level: ", req.user.level);
+  // console.log("user viewed videos: ", req.user.viewed_videos);
   const userViewedVideos = findUserVideos(req.user.viewed_videos);
-  const userRemainingVideos = findRemainingVideos(req.user.viewed_videos);
-  Promise.all([userViewedVideos, userRemainingVideos])
+  const allVideos = findAllVideos(req.user.viewed_videos);
+  Promise.all([userViewedVideos, allVideos])
     .then(values => {
-      console.log("VALUES 0", values[0]);
-      console.log("VALUES 1", values[1]);
+      // console.log("User Viewed Videos", values[0]);
+      // console.log("All Videos", values[1]);
+      const viewed = values[0];
+      const allVideos = values[1];
+      // console.log(allVideos.length);
+      for (i = 0; i < viewed.length; i++) {
+        //   console.log(viewed[i]._id);
+        for (j = allVideos.length; j > 0; j--) {
+          // if (allVideos[j - 1]._id === viewed[i - 1]._id) {
+          //   console.log("all videos ", allVideos[j - 1]);
+          //   console.log("all videos ", allVideos[j - 1]);
+          //   //       // const index = allVideos.indexOf(viewed[i - 1]);
+          //   //       allVideos.splice(j, 1);
+          // }
+        }
+      }
+      // console.log("ALL VIDEOS MINUS USER'S", allVideos);
       res.render("profile", {
-        viewedVideos: values[0],
-        notViewedVideos: values[1]
+        viewedVideos: viewed,
+        notViewedVideos: allVideos
       });
     })
     .catch(err => console.log(err));
