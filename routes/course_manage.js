@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const courseModel = require("../models/course");
 const videoModel = require("../models/video");
+const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 
 // ADD COURSE
-router.post("/course-add", (req, res) => {
+router.post("/course-add", ensureLoggedIn("/"), (req, res) => {
   console.log("req body :", req.body);
   const { course_name, course_difficulty, course_videos } = req.body;
   const newCourse = {

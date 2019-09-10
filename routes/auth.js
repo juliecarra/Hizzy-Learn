@@ -42,6 +42,10 @@ router.post(
 
 //ensure that we are logged in with our account, if it's the case, we can have access to the profile page
 router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
+  console.log("req user :", req.user);
+  console.log("user level: ", req.user.level);
+  console.log("user viewed videos: ", req.user.viewed_videos);
+  return;
   res.render("profile");
 });
 

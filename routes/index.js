@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const videoModel = require("../models/video");
 const courseModel = require("../models/course");
+const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
@@ -33,7 +34,7 @@ function findAllCourses() {
     .catch(err => console.log(err));
 }
 
-router.get("/manage-all", (req, res) => {
+router.get("/manage-all", ensureLoggedIn("/"), (req, res) => {
   const videos = findAllVideos();
   const courses = findAllCourses();
   Promise.all([videos, courses])
