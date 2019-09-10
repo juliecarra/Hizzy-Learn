@@ -48,7 +48,7 @@ function findUserVideos(array) {
     .then(dbRes => dbRes)
     .catch(err => console.log(err));
 }
-function findAllVideos(array) {
+function findAllVideos() {
   return videoModel
     .find()
     .then(dbRes => dbRes)
@@ -57,30 +57,21 @@ function findAllVideos(array) {
 
 //ensure that we are logged in with our account, if it's the case, we can have access to the profile page
 router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
-  // console.log("req user :", req.user);
-  // console.log("user level: ", req.user.level);
-  // console.log("user viewed videos: ", req.user.viewed_videos);
   const userViewedVideos = findUserVideos(req.user.viewed_videos);
-  const allVideos = findAllVideos(req.user.viewed_videos);
+  const allVideos = findAllVideos();
   Promise.all([userViewedVideos, allVideos])
     .then(values => {
-      // console.log("User Viewed Videos", values[0]);
-      // console.log("All Videos", values[1]);
+      console.log("User Viewed Videos", values[0]);
       const viewed = values[0];
       const allVideos = values[1];
-      // console.log(allVideos.length);
-      for (i = 0; i < viewed.length; i++) {
-        //   console.log(viewed[i]._id);
-        for (j = allVideos.length; j > 0; j--) {
-          // if (allVideos[j - 1]._id === viewed[i - 1]._id) {
-          //   console.log("all videos ", allVideos[j - 1]);
-          //   console.log("all videos ", allVideos[j - 1]);
-          //   //       // const index = allVideos.indexOf(viewed[i - 1]);
-          //   //       allVideos.splice(j, 1);
-          // }
+      for (let i = 0; i < viewed.length; i++) {
+        for (let j = allVideos.length - 1; j >= 0; j--) {
+          if (allVideos[j]._id.equals(viewed[i]._id)) {
+            allVideos.splice(j, 1);
+            console.log(allVideos.length);
+          }
         }
       }
-      // console.log("ALL VIDEOS MINUS USER'S", allVideos);
       res.render("profile", {
         viewedVideos: viewed,
         notViewedVideos: allVideos
