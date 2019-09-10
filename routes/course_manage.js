@@ -58,20 +58,29 @@ function findAllVideos() {
     .then(dbRes => dbRes)
     .catch(err => console.log(err));
 }
+function updateCourse(id) {}
 
 router.get("/course-edit/:id", (req, res) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
   const course = findCourseById(req.params.id);
   const videos = findAllVideos();
 
   Promise.all([course, videos])
     .then(values => {
-      console.log(values);
+      // console.log(values);
       res.render("course_edit", {
         course: values[0],
         videos: values[1]
       });
     })
+    .catch(err => console.log(err));
+});
+
+router.post("/course-edit/:id", (req, res) => {
+  console.log("WHAT I ASKED FOR ", req.body);
+  courseModel
+    .findByIdAndUpdate(req.params.id, req.body)
+    .then(res.redirect("/manage-all"))
     .catch(err => console.log(err));
 });
 

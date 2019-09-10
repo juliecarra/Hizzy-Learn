@@ -1,7 +1,6 @@
 const axiosHandler = axios.create({
   baseURL: "http://localhost:3000"
 });
-console.log("coucou");
 
 function deleteVideo(evt) {
   const videoId = evt.target.dataset.idVideo;

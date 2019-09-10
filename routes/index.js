@@ -38,7 +38,7 @@ router.get("/manage-all", (req, res) => {
   const courses = findAllCourses();
   Promise.all([videos, courses])
     .then(values => {
-      console.log(values);
+      // console.log(values);
       res.render("manage_all", {
         videos: values[0],
         courses: values[1],
