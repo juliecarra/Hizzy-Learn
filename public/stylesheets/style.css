@@ -899,28 +899,66 @@ footer a {
   font-weight: 200;
 }
 
+.table-row {
+  font-weight: 200;
+  color: #4c4c4c;
+  font-family: "Lato", sans-serif;
+}
+
 .courses-manage-table {
   border-radius: 140px;
   font-weight: 200;
   font-size: 20px;
-  background-image: linear-gradient(
-    to right bottom,
-    #e0d6c0,
-    rgba(189, 180, 163, 0.9)
-  );
+  margin-left: 290px;
 }
 
+th {
+  padding: 15px;
+}
+
+#url {
+  padding-left: 70px;
+}
+
+.difficulty_padding {
+  padding: 10px;
+}
+
+/*
 .product-manage-table {
   border-radius: 140px;
   font-weight: 200;
   font-size: 20px;
-  background-image: linear-gradient(
-    to right bottom,
-    #e0d6c0,
-    rgba(189, 180, 163, 0.9)
-  );
 }
 
 .middle__text {
   margin-left: 335px;
+}
+
+.table-row {
+  font-weight: 200;
+  color: #4c4c4c;
+  font-family: "Lato", sans-serif;
+}
+
+
+/* EDIT COURSE FOR CSS */
+
+.courses {
+  padding-left: 15px;
+}
+
+button {
+  width: 65px;
+  border-radius: 20px;
+  font-weight: 200;
+  color: #4c4c4c;
+  font-family: "Lato", sans-serif;
+  background-color: #a89565;
+}
+
+/* EDIT VIDEOS */
+
+.name_padding {
+  padding-left: 20px;
 }

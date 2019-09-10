@@ -3,7 +3,7 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
-const upload = require("../config");
+const upload = require("../config/index");
 const User = require("../models/user");
 
 //auth with passport middleware

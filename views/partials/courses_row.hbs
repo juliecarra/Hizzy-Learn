@@ -1,16 +1,16 @@
 <td class="table-division">
-  <div>{{this.course_name}}</div>
+  <div class="courses">{{this.course_name}}</div>
 </td>
 <td class="table-division">
-  <div>{{this.course_difficulty}}</div>
+  <div class="courses">{{this.course_difficulty}}</div>
 </td>
-<td class="table-division">
-  <div>{{this.course_videos}}</div>
+<td class="table-division courses">
+  <div class="courses">{{this.course_videos}}</div>
 </td>
-<td class="table-division">
+<td class="table-division courses">
   <a href="/course-edit/{{this._id}}" data-id-course="{{this._id}}" class="fa fa-edit table-icon edit-icon">Edit</a>
 </td>
-<td class="table-division">
+<td class="table-division courses">
   <button href="/course-delete/{{this._id}}" class="fa fa-trash table-icon delete-icon" data-id-video="{{this._id}}"
     aria-hidden="true">Delete</button>
 </td>
