@@ -1,4 +1,5 @@
 //require modules
+require("./utils/helpers-hbs");
 const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();

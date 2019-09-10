@@ -19,6 +19,13 @@
 <td class="table-division">
   <div>{{this._id}}</div>
 </td>
+{{#if category}}
+<td class="table-division">
+  <input type="checkbox" name="course_videos" id="course_videos">
+</td>
+{{/if}}
+
+{{#unless category}}
 <td class="table-division">
   <a href="/video-edit/{{this._id}}" data-id-video="{{this._id}}" class="fa fa-edit table-icon edit-icon">Edit</a>
 </td>
@@ -26,3 +33,4 @@
   <button href="/video-delete/{{this._id}}" class="fa fa-trash table-icon delete-icon" data-id-video="{{this._id}}"
     aria-hidden="true">Delete</button>
 </td>
+{{/unless}}
