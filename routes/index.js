@@ -9,10 +9,6 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-router.get("/youttest", (req, res) => {
-  res.render("yout_test");
-});
-
 // ADD ELEMENT TO COLLECTIONS ROUTES
 router.get("/video-add", (req, res) => {
   res.render("video_add");
