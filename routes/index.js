@@ -39,7 +39,11 @@ router.get("/manage-all", (req, res) => {
   Promise.all([videos, courses])
     .then(values => {
       console.log(values);
-      res.render("manage_all", { videos: values[0], courses: values[1] });
+      res.render("manage_all", {
+        videos: values[0],
+        courses: values[1],
+        category: "HELLO THIS IS A CATEGORY"
+      });
     })
     .catch(err => console.log(err));
 });

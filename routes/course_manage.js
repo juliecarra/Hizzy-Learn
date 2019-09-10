@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const courseModel = require("../models/course");
+const videoModel = require("../models/video");
 
 // ADD COURSE
 router.post("/course-add", (req, res) => {
@@ -13,6 +14,13 @@ router.post("/course-add", (req, res) => {
   };
   console.log("new object :", newCourse);
 
+  function createNewCourse(course) {
+    return courseModel
+      .create(course)
+      .then(dbRes => dbRes)
+      .catch(err => err);
+  }
+
   courseModel
     .find({ course_name: newCourse.course_name })
     .then(dbRes => {
@@ -20,13 +28,8 @@ router.post("/course-add", (req, res) => {
         const msg = "Sorry, course already exists";
         res.render("course_add", { msg });
       } else {
-        courseModel
-          .create(newCourse)
-          .then(dbRes => {
-            const msg = "Course added to the database";
-            res.render("manage_all", { msg });
-          })
-          .catch(err => console.log(err));
+        const course = createNewCourse(newCourse);
+        res.redirect("/manage-all");
       }
     })
     .catch(err => console.log(err));
@@ -43,13 +46,31 @@ router.delete("/course-delete/:id", (req, res) => {
 });
 
 // EDIT COURSE
+function findCourseById(id) {
+  return courseModel
+    .findById(id)
+    .then(dbRes => dbRes)
+    .catch(err => console.log(err));
+}
+function findAllVideos() {
+  return videoModel
+    .find()
+    .then(dbRes => dbRes)
+    .catch(err => console.log(err));
+}
+
 router.get("/course-edit/:id", (req, res) => {
   console.log(req.params.id);
-  courseModel
-    .findById(req.params.id)
-    .then(dbRes => {
-      console.log(dbRes);
-      res.render("course_edit", { course: dbRes });
+  const course = findCourseById(req.params.id);
+  const videos = findAllVideos();
+
+  Promise.all([course, videos])
+    .then(values => {
+      console.log(values);
+      res.render("course_edit", {
+        course: values[0],
+        videos: values[1]
+      });
     })
     .catch(err => console.log(err));
 });
