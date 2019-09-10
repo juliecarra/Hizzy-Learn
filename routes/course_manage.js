@@ -6,22 +6,18 @@ const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 
 // ADD COURSE
 router.post("/course-add", ensureLoggedIn("/"), (req, res) => {
-  console.log("req body :", req.body);
   const { course_name, course_difficulty, course_videos } = req.body;
   const newCourse = {
     course_name,
     course_difficulty,
     course_videos
   };
-  console.log("new object :", newCourse);
-
   function createNewCourse(course) {
     return courseModel
       .create(course)
       .then(dbRes => dbRes)
       .catch(err => err);
   }
-
   courseModel
     .find({ course_name: newCourse.course_name })
     .then(dbRes => {
@@ -46,7 +42,7 @@ router.delete("/course-delete/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
-// EDIT COURSE
+// GET COURSE DETAIL
 function findCourseById(id) {
   return courseModel
     .findById(id)
@@ -59,16 +55,12 @@ function findAllVideos() {
     .then(dbRes => dbRes)
     .catch(err => console.log(err));
 }
-function updateCourse(id) {}
 
 router.get("/course-edit/:id", (req, res) => {
-  // console.log(req.params.id);
   const course = findCourseById(req.params.id);
   const videos = findAllVideos();
-
   Promise.all([course, videos])
     .then(values => {
-      // console.log(values);
       res.render("course_edit", {
         course: values[0],
         videos: values[1]
@@ -77,11 +69,11 @@ router.get("/course-edit/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
+// SUBMIT EDITED COURSE
 router.post("/course-edit/:id", (req, res) => {
-  console.log("WHAT I ASKED FOR ", req.body);
   courseModel
     .findByIdAndUpdate(req.params.id, req.body)
-    .then(res.redirect("/manage-all"))
+    .then(dbRes => res.redirect("/manage-all"))
     .catch(err => console.log(err));
 });
 
