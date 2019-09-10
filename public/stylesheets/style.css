@@ -222,16 +222,15 @@ body {
 }
 
 .navigation__button {
-  background-color: #fff;
   height: 7rem;
   width: 7rem;
   position: fixed;
 
-  top: 6rem;
+  top: 0rem;
   right: 6rem;
   border-radius: 50%;
   z-index: 2000;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+
   text-align: center;
 }
 
@@ -796,7 +795,7 @@ h5 {
 }
 
 .adress {
-  color: #fff;
+  color: #e0d6c0;
   font-family: "Lato", sans-serif;
   font-size: 20px;
   font-style: italic;
@@ -807,7 +806,7 @@ h5 {
   height: 375px;
   float: right;
   width: 60%;
-  margin-top: -355px;
+  margin-top: -367px;
   margin-right: -15px;
 }
 
@@ -818,6 +817,10 @@ h5 {
 .facebook__move {
   margin-top: -50px;
   margin-left: 240px;
+}
+
+.col.col-3 {
+  margin-bottom: -100px;
 }
 /*
 
@@ -884,4 +887,40 @@ footer a {
 
 .hr__footer {
   margin-bottom: -650px;
+}
+
+/*MANAGE ALL CSS */
+
+.manage-courses-title,
+.manage-video-title {
+  color: #a89565;
+  text-align: center;
+  font-size: 60px;
+  font-weight: 200;
+}
+
+.courses-manage-table {
+  border-radius: 140px;
+  font-weight: 200;
+  font-size: 20px;
+  background-image: linear-gradient(
+    to right bottom,
+    #e0d6c0,
+    rgba(189, 180, 163, 0.9)
+  );
+}
+
+.product-manage-table {
+  border-radius: 140px;
+  font-weight: 200;
+  font-size: 20px;
+  background-image: linear-gradient(
+    to right bottom,
+    #e0d6c0,
+    rgba(189, 180, 163, 0.9)
+  );
+}
+
+.middle__text {
+  margin-left: 335px;
 }

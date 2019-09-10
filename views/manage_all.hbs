@@ -1,8 +1,6 @@
 {{#if msg}}
 <p>{{msg}}</p>
 {{/if}}
-
-
 <div class="big-container manage-courses-wrapper">
   <h3 class="manage-courses-title">Manage Courses</h3>
   <a href="/course-add">Add a course</a>
@@ -10,16 +8,12 @@
     <thead>
       <tr class="table-row">
         <th class="table-head">Course Name</th>
-        <th class="table-head">Course Url</th>
-        <th class="table-head">Course Difficulty</th>
-        <th class="table-head">Course Description</th>
-        <th class="table-head">Course Front end</th>
-        <th class="table-head">Course Back end</th>
+        <th class="table-head">Difficulty</th>
+        <th class="table-head">Description</th>
         <th class="table-head">Edit</th>
         <th class="table-head">Delete</th>
       </tr>
     </thead>
-
     <tbody>
       {{#each courses}}
       <tr class="table-row" id="{{this._id}}">
@@ -34,8 +28,6 @@
     </tbody>
   </table>
 </div>
-
-
 <div class="big-container manage-video-wrapper">
   <h3 class="manage-video-title">Manage Videos</h3>
   <a href="/video-add">Add a video</a>
@@ -53,7 +45,6 @@
         <th class="table-head">Delete</th>
       </tr>
     </thead>
-
     <tbody>
       {{#each videos}}
       <tr class="table-row" id="{{this._id}}">
