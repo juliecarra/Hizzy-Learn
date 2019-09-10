@@ -3,7 +3,7 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
-const upload = require("../config/index");
+const upload = require("../config/cloudinary");
 const User = require("../models/user");
 
 //auth with passport middleware
@@ -47,7 +47,10 @@ router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
 
 //if we don't upload a profil picture and we click on "save", we have a message that appear "photo field is empty"
 //if we upload a profile picture and click on save we are redirected to the profile page
-router.post("/upload", upload.single("photo"), (req, res) => {
+router.post("/upload", upload.single("profilePhoto"), (req, res) => {
+  console.log(req.body);
+  console.log(req.file);
+
   if (req.file !== undefined) {
     User.findByIdAndUpdate(req.user._id, {
       $set: { profilePhoto: req.file.url }
