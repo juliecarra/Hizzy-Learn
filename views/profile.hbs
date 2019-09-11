@@ -1,7 +1,7 @@
 {{#if user}}
 <div class="container__profile">
   <div class="profile-background">
-    <h1 class="welcome__msg">Welcome back<span class="bold__grey">{{user.username}}</span></h1>
+    <h1 class="welcome__msg">Welcome to your profile page<span class="bold__grey">{{user.username}}</span></h1>
     {{/if}}
 
 
@@ -24,33 +24,43 @@
 </div>
 </div>
 
-{{!-- <img src="https://media3.giphy.com/media/113PoJxEaRxKbm/giphy.gif?cid=3640f6095bff0b91325859656f15cb72" alt=""> --}}
-
+<h1 class="username_style">{{user.username}}</h1>
 
 
 {{!-- {{/if}} --}}
-<h4>Make your choices</h4>
-<label for="level">Choose your level</label>
-<select name="level" id="level-select" value="{{this.level}}">
-  <option value="" selected disabled hidden>Level</option>
-  <option value="Beginner">Beginner</option>
-  <option value="Intermediate">Intermediate</option>
-  <option value="Master">Master</option>
-</select>
+<div class="choice_profile">
+  <h4>Make your choices</h4>
+  <label for="level">Choose your level</label>
+  <select name="level" id="level-select" value="{{this.level}}">
+    <option value="" selected disabled hidden>Level</option>
+    <option value="Beginner">Beginner</option>
+    <option value="Intermediate">Intermediate</option>
+    <option value="Master">Master</option>
+  </select>
+  <br>
+  <label for="cursus">Choose your course</label>
+  <select name="cursus" id="cursus-select">
+    <option value="" selected disabled hidden>Course</option>
+    <option value="" disabled>Select your level first</option>
 
-<label for="cursus">Choose your course</label>
-<select name="cursus" id="cursus-select">
-  <option value="" selected disabled hidden>Course</option>
-  <option value="" disabled>Select your level first</option>
+  </select>
+  <button id="follow-course-btn">Follow this course</button>
+</div>
 
-</select>
-<button id="follow-course-btn">Follow this course</button>
+
+<div class="descr">
+  <h1 class="descri">Hey, i'm {{user.username}}!</h1>
+  <p class="userDescription">I am really excited to be part of <br> the Hizzy/Learn community. <br> I have chosen
+    the
+    {{user.level}} level and <br> I am currently following the {{user.cursus}} cursus. <br> Let's the journey begin!
+  </p>
+</div>
 
 {{#if message }}
 <div class="error-message w50">{{message}}</div>
 {{/if}}
-<h1 class="username_style">{{user.username}}</h1>
-<p class="userDescription">Hello, i'm {{user.username}}.</p>
+
+
 
 
 
