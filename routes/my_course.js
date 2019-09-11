@@ -32,27 +32,36 @@ function findCourse(req) {
 }
 
 router.get("/my-course", ensureLoggedIn("/"), (req, res) => {
-  const userViewedVideos = findUserVideos(req.user.viewed_videos);
-  const course = findCourse(req);
-  Promise.all([userViewedVideos, course])
-    .then(values => {
-      const viewed = values[0];
-      const course = values[1];
-      const courseVideos = course[0].course_videos;
-      for (let i = 0; i < viewed.length; i++) {
-        for (let j = courseVideos.length - 1; j >= 0; j--) {
-          if (courseVideos[j]._id.equals(viewed[i]._id)) {
-            courseVideos.splice(j, 1);
+  console.log("req.user", req.user);
+  if (!req.user.cursus) {
+    const msg = { txt: "You have no course selected." };
+    res.render("my_course", { msg });
+  } else {
+    const userViewedVideos = findUserVideos(req.user.viewed_videos);
+    const course = findCourse(req);
+    Promise.all([userViewedVideos, course])
+      .then(values => {
+        const viewed = values[0];
+        const course = values[1];
+        const courseVideos = course[0].course_videos;
+        for (let i = 0; i < viewed.length; i++) {
+          for (let j = courseVideos.length - 1; j >= 0; j--) {
+            if (courseVideos[j]._id.equals(viewed[i]._id)) {
+              courseVideos.splice(j, 1);
+            }
           }
         }
-      }
-      console.log("Course videos", courseVideos);
-      res.render("my_course", {
-        viewedVideos: viewed,
-        courseVideos: courseVideos
-      });
-    })
-    .catch(err => console.log(err));
+        if (!courseVideos.length) {
+          const msg = { txt: "You have finished your course." };
+          res.render("my_course", { msg });
+        }
+        res.render("my_course", {
+          viewedVideos: viewed,
+          courseVideos: courseVideos
+        });
+      })
+      .catch(err => console.log(err));
+  }
 });
 
 module.exports = router;

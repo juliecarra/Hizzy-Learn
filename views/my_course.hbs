@@ -1,5 +1,9 @@
 <h2>My course</h2>
 
+{{#if msg}}
+<div>{{msg.txt}}</div>
+<div>Go to your <a href="/profile">profile</a> and select a new course</div>
+{{/if}}
 {{#if courseVideos}}
 <h4>Next videos</h4>
 {{!-- Initial width : 640 ; height : 385 --}}
