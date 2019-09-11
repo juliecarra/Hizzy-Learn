@@ -1,21 +1,28 @@
 {{#if user}}
-<h1 class="welcome__msg">Welcome back<span class="bold__grey">{{user.username}}</span></h1>
-{{/if}}
+<div class="container__profile">
+  <div class="profile-background">
+    <h1 class="welcome__msg">Welcome back<span class="bold__grey">{{user.username}}</span></h1>
+    {{/if}}
 
-<img src="{{user.profilePhoto}}" class="profileImg" />
 
-{{#unless user.profilePhoto}}
-<h2>No profile picture! <br> Please upload your photo</h2>
-{{/unless}}
+    <img src="{{user.profilePhoto}}" class="profileImg" />
 
-<form id="photoForm" action="/profile" method="post" enctype="multipart/form-data">
-  {{!-- <span class="fileName">select the profile picture</span> --}}
-  {{!-- <div class="photoBox"> --}}
-  <input type="file" name="profilePhoto" class="photoInput">
-  {{!--  --}}
-  {{!-- </div> --}}
-  <button type="submit" class="saveBut">Save profile picture</button>
-</form>
+    {{#unless user.profilePhoto}}
+    <h2>No profile picture! <br> Please upload your photo</h2>
+    {{/unless}}
+
+    <form id="photoForm" action="/profile" method="post" enctype="multipart/form-data">
+      {{!-- <span class="fileName">select the profile picture</span> --}}
+      {{!-- <div class="photoBox"> --}}
+      <input type="file" name="profilePhoto" class="photoInput">
+      {{!--  --}}
+      {{!-- </div> --}}
+      <button type=" submit" class="saveBut">Save profile picture</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
 
 {{!-- <img src="https://media3.giphy.com/media/113PoJxEaRxKbm/giphy.gif?cid=3640f6095bff0b91325859656f15cb72" alt=""> --}}
 
@@ -26,8 +33,8 @@
 {{#if message }}
 <div class="error-message w50">{{message}}</div>
 {{/if}}
-<h1>{{user.username}}</h1>
-<p class="userDescription">Profile description.</p>
+<h1 class="username_style">{{user.username}}</h1>
+<p class="userDescription">Hello, i'm {{user.username}}.</p>
 
 {{#if notViewedVideos}}
 <h4>Next videos</h4>
