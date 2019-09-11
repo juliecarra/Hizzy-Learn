@@ -4,11 +4,16 @@ const videoModel = require("../models/video");
 
 // ADD VIDEO
 router.post("/video-add", (req, res) => {
-  console.log("req body :", req.body);
-  const { name, url, difficulty_tag, description } = req.body;
-  console.log(url);
+  var { name, url, difficulty_tag, description } = req.body;
   req.body.front_end === "on" ? (front_end = true) : (front_end = false);
   req.body.back_end === "on" ? (back_end = true) : (back_end = false);
+
+  // replace watch?v= by embed for registered url
+  if (url[24] === "w") {
+    const realUrl = url.slice(32);
+    url = "https://www.youtube.com/embed/" + `${realUrl}`;
+  }
+
   const newVid = {
     name,
     url,
