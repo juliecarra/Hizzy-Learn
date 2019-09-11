@@ -42,42 +42,9 @@ router.post(
   })
 );
 
-function findUserVideos(array) {
-  return videoModel
-    .find({ _id: array })
-    .then(dbRes => dbRes)
-    .catch(err => console.log(err));
-}
-function findAllVideos() {
-  return videoModel
-    .find()
-    .then(dbRes => dbRes)
-    .catch(err => console.log(err));
-}
-
 //ensure that we are logged in with our account, if it's the case, we can have access to the profile page
 router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
-  const userViewedVideos = findUserVideos(req.user.viewed_videos);
-  const allVideos = findAllVideos();
-  Promise.all([userViewedVideos, allVideos])
-    .then(values => {
-      console.log("User Viewed Videos", values[0]);
-      const viewed = values[0];
-      const allVideos = values[1];
-      for (let i = 0; i < viewed.length; i++) {
-        for (let j = allVideos.length - 1; j >= 0; j--) {
-          if (allVideos[j]._id.equals(viewed[i]._id)) {
-            allVideos.splice(j, 1);
-            console.log(allVideos.length);
-          }
-        }
-      }
-      res.render("profile", {
-        viewedVideos: viewed,
-        notViewedVideos: allVideos
-      });
-    })
-    .catch(err => console.log(err));
+  res.render("profile");
 });
 
 //if we don't upload a profil picture and we click on "save", we have a message that appear "photo field is empty"

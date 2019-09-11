@@ -165,11 +165,13 @@ const authRoutes = require("./routes/auth");
 const manageVideos = require("./routes/video_manage");
 const manageCourses = require("./routes/course_manage");
 const profile = require("./routes/profile");
+const myCourse = require("./routes/my_course");
 app.use("/", index);
 app.use("/", authRoutes);
 app.use("/", manageVideos);
 app.use("/", manageCourses);
 app.use("/", profile);
+app.use("/", myCourse);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
