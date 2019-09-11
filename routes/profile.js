@@ -24,4 +24,16 @@ router.post("/profile", uploader.single("profilePhoto"), (req, res) => {
     });
 });
 
+router.post("/course-list", (req, res) => {
+  console.log(req.data);
+  console.log(req.body);
+  courseModel
+    .find(req.body)
+    .then(dbRes => {
+      // console.log(dbRes);
+      res.send(dbRes);
+    })
+    .catch(err => console.log(err));
+});
+
 module.exports = router;

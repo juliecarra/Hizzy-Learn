@@ -13,7 +13,7 @@ const UserSchema = Schema({
   isAdmin: { type: Boolean, default: false },
   level: String,
   cursus: String,
-  viewed_videos: Array
+  viewed_videos: [{ type: Schema.Types.ObjectId, ref: "Videos" }]
 });
 
 const User = mongoose.model("Users", UserSchema);
