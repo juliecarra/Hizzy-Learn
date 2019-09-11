@@ -23,20 +23,24 @@
 {{#if notViewedVideos}}
 <h4>Next videos</h4>
 {{!-- Initial width : 640 ; height : 385 --}}
-{{#each notViewedVideos}}
-<iframe class="youtube-player" type="text/html" width="332" height="200 " src="{{this.url}}"></iframe>
-<label for="add-viewed">Add to viewed list</label>
-<input type="checkbox" name="add-viewed" id="{{this._id}}">
-<button>Add</button>
-{{/each}}
+<div id="not-viewed-div">
+  {{#each notViewedVideos}}
+  <iframe class="youtube-player" type="text/html" width="332" height="200 " src="{{this.url}}"></iframe>
+  <label for="add-viewed">Add to viewed list</label>
+  <button class="add-viewed-btn" id="{{this._id}}">Add</button>
+  {{!-- <input type="checkbox" name="add-viewed" id="{{this._id}}"> --}}
+  {{/each}}
+</div>
 {{/if}}
 
 {{#if viewedVideos}}
 <h4>Viewed videos</h4>
-{{#each viewedVideos}}
-<iframe class="youtube-player" type="text/html" width="332" height="200" src="{{this.url}}"></iframe>
-<label for="remove-viewed">Remove from viewed list</label>
-<input type="checkbox" name="remove-viewed" id="{{this._id}}">
-<button>Remove</button>
-{{/each}}
+<div id="viewed-div">
+  {{#each viewedVideos}}
+  <iframe class=" youtube-player" type="text/html" width="332" height="200" src="{{this.url}}"></iframe>
+  <label for="remove-viewed">Remove from viewed list</label>
+  <button class="remove-viewed-btn" id="{{this._id}}">Remove</button>
+  {{!-- <input type="checkbox" name="remove-viewed" id="{{this._id}}"> --}}
+  {{/each}}
+</div>
 {{/if}}
