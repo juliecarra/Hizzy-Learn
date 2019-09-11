@@ -890,7 +890,7 @@ footer a {
 }
 
 .hr__footer {
-  margin-bottom: -650px;
+  margin-bottom: -772px;
 }
 
 /*MANAGE ALL CSS */
@@ -902,6 +902,7 @@ footer a {
   font-size: 60px;
   font-weight: 200;
   margin-left: 280px;
+  margin-top: 100px;
 }
 
 .table-row {
@@ -927,6 +928,10 @@ th {
 
 .difficulty_padding {
   padding: 10px;
+}
+
+#delete_btn {
+  width: 80px;
 }
 
 /*
@@ -966,4 +971,27 @@ button {
 
 .padding {
   padding-top: 20px;
+}
+
+.move_last_hr {
+  margin-bottom: 100px;
+}
+
+.footer.container {
+  margin-top: 200px;
+}
+
+footer {
+  margin-left: -25px;
+}
+
+/* ICON STYLE CSS */
+
+.fab.fa-earlybirds {
+  background-image: linear-gradient(
+      to right bottom,
+      rgb(117, 83, 15),
+      rgba(189, 180, 163, 15)
+    ),
+    url("../images/main.png");
 }

@@ -4,6 +4,7 @@ const videoModel = require("../models/video");
 const courseModel = require("../models/course");
 const userModel = require("../models/user");
 
+/*
 router.patch("/profile/", (req, res) => {
   console.log(req.body);
   console.log(req.user);
@@ -11,6 +12,9 @@ router.patch("/profile/", (req, res) => {
     .findOneAndUpdate({ _id: req.user._id })
     .then()
     .catch();
+*/
+
+//DONE BY ME
 const uploader = require("./../config/cloudinary");
 
 router.post("/profile", uploader.single("profilePhoto"), (req, res) => {
