@@ -1,0 +1,13 @@
+<h2>My course</h2>
+
+{{#if videos}}
+<div id="not-viewed-div">
+  Videos
+  {{#each videos}}
+  <iframe class="youtube-player" type="text/html" width="332" height="200 " src="{{this.url}}"></iframe>
+  <label for="add-viewed">Add to viewed list</label>
+  <button class="add-viewed-btn" id="{{this._id}}">Add</button>
+  {{!-- <input type="checkbox" name="add-viewed" id="{{this._id}}"> --}}
+  {{/each}}
+</div>
+{{/if}}

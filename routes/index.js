@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const videoModel = require("../models/video");
 const courseModel = require("../models/course");
+const userModel = require("../models/user");
 const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 
 /* GET home page. */
@@ -43,6 +44,20 @@ router.get("/manage-all", ensureLoggedIn("/"), (req, res) => {
       });
     })
     .catch(err => console.log(err));
+});
+
+router.get("/my-course", ensureLoggedIn("/"), (req, res) => {
+  courseModel
+    .find({ course_difficulty: req.user.level, course_cursus: req.user.cursus })
+    .populate("course_videos")
+    .then(dbRes => {
+      console.log(dbRes);
+      console.log(dbRes[0].course_difficulty);
+      dbRes[0].course_videos.forEach(video => console.log(video));
+      res.render("my_course", { videos: dbRes[0].course_videos });
+    })
+    .catch(err => console.log(err));
+  // console.log("My-course :", req.user.level);
 });
 
 module.exports = router;
