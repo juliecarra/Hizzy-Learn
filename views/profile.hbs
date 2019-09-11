@@ -1,5 +1,5 @@
 {{#if user}}
-<h1 class="welcome__msg">Welcome to Juloup app<span class="bold__grey">{{user.username}}</span></h1>
+<h1 class="welcome__msg">Welcome back<span class="bold__grey">{{user.username}}</span></h1>
 {{/if}}
 
 <img src="{{user.profilePhoto}}" class="profileImg" />
@@ -9,9 +9,9 @@
 {{/unless}}
 
 <form id="photoForm" action="/profile" method="post" enctype="multipart/form-data">
-  <span class="fileName">select the profile picture</span>
+  {{!-- <span class="fileName">select the profile picture</span> --}}
   {{!-- <div class="photoBox"> --}}
-  <input type="file" name="profilePhoto" class="photoInput" onchange="fileSelect(event)">
+  <input type="file" name="profilePhoto" class="photoInput">
   {{!--  --}}
   {{!-- </div> --}}
   <button type="submit" class="saveBut">Save profile picture</button>

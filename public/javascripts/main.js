@@ -6,7 +6,7 @@ function addViewedVideo(evt) {
   console.log(evt.target.id);
   const id = evt.target.id;
   axiosHandler
-    .patch("/profile", { toto: id })
+    .patch("/profile", { videoId: id })
     .then(res => console.log(res))
     .catch(err => console.log(err));
 }

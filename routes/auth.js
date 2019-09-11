@@ -26,13 +26,6 @@ router.post(
   })
 );
 
-// router.patch("/profile/:id", (req, res) => {
-//   console.log("je passe par ici");
-//   console.log(req.params.id);
-//   console.log(req.body);
-//   console.log(req.user);
-// });
-
 //ensure that we are logged out so we can signup
 router.get("/signup", ensureLoggedOut(), (req, res) => {
   res.render("auth/signup", { message: req.flash("error") });

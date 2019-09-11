@@ -1,20 +1,21 @@
 const express = require("express");
-const router = new express.Router();
+const router = express.Router();
 const videoModel = require("../models/video");
 const courseModel = require("../models/course");
 const userModel = require("../models/user");
 
-/*
 router.patch("/profile/", (req, res) => {
   console.log(req.body);
   console.log(req.user);
   userModel
-    .findOneAndUpdate({ _id: req.user._id })
-    .then()
-    .catch();
-*/
+    .findOneAndUpdate(
+      { _id: req.user._id },
+      { $push: { viewed_videos: req.body.videoId } }
+    )
+    .then(dbRes => dbRes)
+    .catch(err => console.log(err));
+});
 
-//DONE BY ME
 const uploader = require("./../config/cloudinary");
 
 router.post("/profile", uploader.single("profilePhoto"), (req, res) => {

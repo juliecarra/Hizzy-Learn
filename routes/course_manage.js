@@ -6,11 +6,17 @@ const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 
 // ADD COURSE
 router.post("/course-add", ensureLoggedIn("/"), (req, res) => {
-  const { course_name, course_difficulty, course_videos } = req.body;
+  const {
+    course_name,
+    course_difficulty,
+    course_videos,
+    course_cursus
+  } = req.body;
   const newCourse = {
     course_name,
     course_difficulty,
-    course_videos
+    course_videos,
+    course_cursus
   };
   function createNewCourse(course) {
     return courseModel
@@ -46,6 +52,7 @@ router.delete("/course-delete/:id", (req, res) => {
 function findCourseById(id) {
   return courseModel
     .findById(id)
+    .populate("course_videos")
     .then(dbRes => dbRes)
     .catch(err => console.log(err));
 }
@@ -61,6 +68,7 @@ router.get("/course-edit/:id", (req, res) => {
   const videos = findAllVideos();
   Promise.all([course, videos])
     .then(values => {
+      console.log(values[0]);
       res.render("course_edit", {
         course: values[0],
         videos: values[1]
