@@ -447,7 +447,12 @@ hr {
 
 /* INDEX.HBS CSS */
 
+.fab.fa-earlybirds {
+  background-color: aliceblue;
+}
 .header {
+  width: 1367px;
+  margin-left: -129px;
   height: 95vh;
   background-image: linear-gradient(
       to right bottom,
@@ -610,12 +615,11 @@ hr {
 
 .about__packages__split {
   border-bottom: 1px solid #bdb4a3;
-  width: 65%;
-  margin-left: 205px;
+  width: 95%;
 }
 
 .heading__title__move {
-  margin-bottom: -330px;
+  margin-bottom: -315px;
 }
 
 .heading-secondary {
@@ -894,13 +898,14 @@ footer a {
 .manage-courses-title,
 .manage-video-title {
   color: #a89565;
-  text-align: center;
+
   font-size: 60px;
   font-weight: 200;
+  margin-left: 280px;
 }
 
 .table-row {
-  font-weight: 200;
+  font-weight: 400;
   color: #4c4c4c;
   font-family: "Lato", sans-serif;
 }
@@ -909,7 +914,7 @@ footer a {
   border-radius: 140px;
   font-weight: 200;
   font-size: 20px;
-  margin-left: 290px;
+  margin-left: 220px;
 }
 
 th {
@@ -951,7 +956,7 @@ th {
 button {
   width: 65px;
   border-radius: 20px;
-  font-weight: 200;
+  font-weight: 400;
   color: #4c4c4c;
   font-family: "Lato", sans-serif;
   background-color: #a89565;
@@ -959,6 +964,6 @@ button {
 
 /* EDIT VIDEOS */
 
-.name_padding {
-  padding-left: 20px;
+.padding {
+  padding-top: 20px;
 }

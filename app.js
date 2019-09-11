@@ -98,7 +98,9 @@ passport.use(
             }
 
             if (user) {
-              return next(null, false);
+              return next(null, false, {
+                message: "This email is already taken."
+              });
             } else {
               // Destructure the body
               const { username, email, password } = req.body;
