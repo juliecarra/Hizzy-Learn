@@ -31,12 +31,12 @@ function findAllCourses() {
     .catch(err => console.log(err));
 }
 
-router.get("/manage-all", ensureLoggedIn("/"), (req, res) => {
+router.get("/manage-all", ensureLoggedIn("/login"), (req, res) => {
   const videos = findAllVideos();
   const courses = findAllCourses();
   Promise.all([videos, courses])
     .then(values => {
-      // console.log(values);
+      console.log(values);
       res.render("manage_all", {
         videos: values[0],
         courses: values[1],
@@ -46,4 +46,17 @@ router.get("/manage-all", ensureLoggedIn("/"), (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.get("/my-videos", ensureLoggedIn("/login"), (req, res) => {
+  console.log(req.user);
+
+  userModel
+    .find({ _id: req.user._id })
+    .populate("viewed_videos")
+    .then(dbRes => {
+      console.log("DBRES!!!!!", dbRes);
+      console.log("Viewed videos", dbRes[0].viewed_videos);
+      res.render("my_videos", { viewedVideos: dbRes[0].viewed_videos });
+    })
+    .catch(err => console.log(err));
+});
 module.exports = router;

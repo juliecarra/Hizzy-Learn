@@ -44,7 +44,7 @@ router.post(
 
 //ensure that we are logged in with our account, if it's the case, we can have access to the profile page
 router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
-  res.render("profile");
+  res.render("profile", { scripts: ["profile.js"] });
 });
 
 //if we don't upload a profil picture and we click on "save", we have a message that appear "photo field is empty"

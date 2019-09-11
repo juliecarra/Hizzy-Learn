@@ -1,0 +1,9 @@
+<h2>My videos</h2>
+
+<p>Here you can find all the videos you watched</p>
+
+{{#each viewedVideos}}
+<iframe class=" youtube-player" type="text/html" width="332" height="200" src="{{this.url}}" allowfullscreen></iframe>
+<label for="remove-viewed">Remove from viewed list</label>
+<button class="remove-viewed-btn" id="{{this._id}}">Remove</button>
+{{/each}}
