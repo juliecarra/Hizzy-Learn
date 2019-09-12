@@ -19,21 +19,19 @@
   <input type="text" name="course_cursus" id="course-name" value="{{course.course_cursus}}">
 
   <h4>Course videos</h4>
+  {{#unless course.course_videos}}
+  <p>This course has no videos yet. </p>
+  {{/unless}}
   {{#each course.course_videos}}
-  <p>{{this.name}}</p>
+  <p>{{this.name}} <button id={{this._id}}>Remove video from course</button></p>
   {{/each}}
   <h4>Select videos for the course</h4>
   <table class="product-manage-table">
     <thead>
       <tr class="table-row">
         <th class="table-head">Video Name</th>
-        {{!-- <th class="table-head">Url</th> --}}
         <th class="table-head">Difficulty</th>
         <th class="table-head">Description</th>
-        {{!-- <th class="table-head">Front end</th>
-        <th class="table-head">Back end</th>
-        <th class="table-head">Video DB ID</th> for adding to course --}}
-
         <th class=" table-head">Add video to course</th>
       </tr>
     </thead>

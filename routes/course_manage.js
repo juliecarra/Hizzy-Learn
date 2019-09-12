@@ -50,17 +50,10 @@ router.delete("/course-delete/:id", (req, res) => {
 
 // GET COURSE DETAIL
 function findCourseById(id) {
-  return courseModel
-    .findById(id)
-    .populate("course_videos")
-    .then(dbRes => dbRes)
-    .catch(err => console.log(err));
+  return courseModel.findById(id).populate("course_videos");
 }
 function findAllVideos() {
-  return videoModel
-    .find()
-    .then(dbRes => dbRes)
-    .catch(err => console.log(err));
+  return videoModel.find();
 }
 
 router.get("/course-edit/:id", (req, res) => {
@@ -68,7 +61,8 @@ router.get("/course-edit/:id", (req, res) => {
   const videos = findAllVideos();
   Promise.all([course, videos])
     .then(values => {
-      console.log(values[0]);
+      console.log("Course :", values[0]);
+      console.log("Videos :", values[1]);
       res.render("course_edit", {
         course: values[0],
         videos: values[1]
