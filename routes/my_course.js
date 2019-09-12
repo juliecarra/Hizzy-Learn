@@ -18,31 +18,41 @@ router.patch("/my_course", (req, res) => {
 });
 
 function findUserVideos(array) {
-  return videoModel
-    .find({ _id: array })
-    .then(dbRes => dbRes)
-    .catch(err => console.log(err));
+  return videoModel.find({ _id: array });
+  // .then(dbRes => dbRes)
+  // .catch(err => console.log(err));
 }
 function findCourse(req) {
+  console.log("User level :", req.user.level);
+  console.log("User cursus :", req.user.course);
   return courseModel
-    .find({ course_difficulty: req.user.level, course_cursus: req.user.cursus })
-    .populate("course_videos")
-    .then(dbRes => dbRes)
-    .catch(err => console.log(err));
+    .find({ course_name: req.user.course })
+    .populate("course_videos");
+  // .then(dbRes => {
+  //   dbRes;
+  //   console.log("DBRES ::::::", dbRes);
+  // })
+  // .catch(err => console.log(err));
 }
 
 router.get("/my-course", ensureLoggedIn("/"), (req, res) => {
-  console.log("req.user", req.user);
-  if (!req.user.cursus) {
+  if (!req.user.course) {
     const msg = { txt: "You have no course selected." };
     res.render("my_course", { msg });
   } else {
     const userViewedVideos = findUserVideos(req.user.viewed_videos);
-    const course = findCourse(req);
-    Promise.all([userViewedVideos, course])
+    const courseFound = findCourse(req);
+    Promise.all([userViewedVideos, courseFound])
       .then(values => {
         const viewed = values[0];
+
         const course = values[1];
+
+        if (course[0].course_videos.length === 0) {
+          const msg = { txt: "No video left in this course" };
+          res.render("my_course", { msg });
+          return;
+        }
         const courseVideos = course[0].course_videos;
         for (let i = 0; i < viewed.length; i++) {
           for (let j = courseVideos.length - 1; j >= 0; j--) {
@@ -56,7 +66,7 @@ router.get("/my-course", ensureLoggedIn("/"), (req, res) => {
           res.render("my_course", { msg });
         }
         res.render("my_course", {
-          viewedVideos: viewed,
+          // viewedVideos: viewed,
           courseVideos: courseVideos
         });
       })

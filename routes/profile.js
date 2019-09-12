@@ -24,8 +24,8 @@ router.post("/profile", uploader.single("profilePhoto"), (req, res) => {
 });
 
 router.post("/course-list", (req, res) => {
-  console.log(req.data);
-  console.log(req.body);
+  // console.log(req.data);
+  // console.log(req.body);
   courseModel
     .find(req.body)
     .then(dbRes => {
@@ -37,11 +37,11 @@ router.post("/course-list", (req, res) => {
 
 router.post("/profile-course-update", (req, res) => {
   console.log(req.body);
-  console.log(req.user);
+  // console.log(req.user);
   userModel
     .findOneAndUpdate({ _id: req.user._id }, req.body)
     .then(dbRes => {
-      console.log(dbRes);
+      // console.log(dbRes);
       const msg = { msg: "Course selected" };
       res.send(msg);
     })

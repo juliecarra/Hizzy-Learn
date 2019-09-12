@@ -9,15 +9,15 @@ function fillCourseList(evt) {
     .then(res => {
       console.log("RES", res.data);
       const courseArray = res.data;
-      const cursusSelect = document.getElementById("cursus-select");
-      cursusSelect.innerHTML =
+      const courseSelect = document.getElementById("course-select");
+      courseSelect.innerHTML =
         "<option value='' selected disabled hidden>Course</option>";
       for (let course of courseArray) {
         console.log(course);
         const newOption = document.createElement("option");
         newOption.value = `${course.course_name}`;
         newOption.innerHTML = course.course_name;
-        cursusSelect.appendChild(newOption);
+        courseSelect.appendChild(newOption);
       }
     })
     .catch(err => console.log(err));
@@ -28,7 +28,7 @@ function submitCourseChoice(evt) {
   console.log(courseChoiceList.value);
   axiosHandler
     .post("/profile-course-update", {
-      cursus: courseChoiceList.value
+      course: courseChoiceList.value
     })
     .then(res => {
       console.log(res.data);
@@ -40,7 +40,7 @@ function submitCourseChoice(evt) {
 }
 
 const levelChoiceList = document.getElementById("level-select");
-const courseChoiceList = document.getElementById("cursus-select");
+const courseChoiceList = document.getElementById("course-select");
 const chooseCourseBtn = document.getElementById("follow-course-btn");
 
 chooseCourseBtn.onclick = submitCourseChoice;

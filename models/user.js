@@ -12,7 +12,7 @@ const UserSchema = Schema({
   },
   isAdmin: { type: Boolean, default: false },
   level: String,
-  cursus: String,
+  course: String,
   viewed_videos: [{ type: Schema.Types.ObjectId, ref: "Videos" }]
 });
 

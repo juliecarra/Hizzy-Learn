@@ -79,6 +79,7 @@ router.get("/course-edit/:id", (req, res) => {
 
 // SUBMIT EDITED COURSE
 router.post("/course-edit/:id", (req, res) => {
+  console.log("req body : ", req.body);
   courseModel
     .findByIdAndUpdate(req.params.id, req.body)
     .then(dbRes => res.redirect("/manage-all"))
