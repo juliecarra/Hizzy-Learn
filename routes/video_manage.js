@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const videoModel = require("../models/video");
+const userModel = require("../models/user");
+const courseModel = require("../models/course");
 
 // ADD VIDEO
 router.post("/video-add", (req, res) => {
@@ -45,24 +47,36 @@ router.post("/video-add", (req, res) => {
 
 // DELETE VIDEO
 router.delete("/video-delete/:id", (req, res) => {
-  console.log("YAY");
-  console.log(req.params.id);
-  videoModel
-    .findByIdAndRemove(req.params.id)
-    .then(dbRes => res.send(dbRes))
+  Promise.all([
+    // Remove vid from Vid collection
+    videoModel.findByIdAndRemove(req.params.id),
+    // Remove vid from all users viewed videos
+    userModel.update(
+      {},
+      { $pullAll: { viewed_videos: [req.params.id] } },
+      { multi: true }
+    ),
+    // Remove vid from all courses videos
+    courseModel.update(
+      {},
+      { $pullAll: { course_videos: [req.params.id] } },
+      { multi: true }
+    )
+  ])
+    .then(dbRes => res.send(dbRes[0]))
     .catch(err => console.log(err));
-});
 
-// EDIT VIDEO
-router.get("/video-edit/:id", (req, res) => {
-  console.log(req.params.id);
-  videoModel
-    .findById(req.params.id)
-    .then(dbRes => {
-      console.log(dbRes);
-      res.render("video_edit", { video: dbRes });
-    })
-    .catch(err => console.log(err));
+  // EDIT VIDEO
+  router.get("/video-edit/:id", (req, res) => {
+    console.log(req.params.id);
+    videoModel
+      .findById(req.params.id)
+      .then(dbRes => {
+        console.log(dbRes);
+        res.render("video_edit", { video: dbRes });
+      })
+      .catch(err => console.log(err));
+  });
 });
 
 module.exports = router;
