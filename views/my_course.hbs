@@ -1,18 +1,18 @@
-<h2>My course</h2>
+<h2 class="current_course">My course</h2>
 
 {{#if msg}}
 <div>{{msg.txt}}</div>
 <div>Go to your <a href="/profile">profile</a> and select a new course</div>
 {{/if}}
 {{#if courseVideos}}
-<h4>Next videos</h4>
+<h4>Here's your next videos!</h4>
 {{!-- Initial width : 640 ; height : 385 --}}
 <div id="not-viewed-div">
   {{#each courseVideos}}
   <p>
-    <iframe class="youtube-player" type="text/html" width="332" height="200 " src="{{this.url}}"
+    <iframe class="youtube-player" type="text/html" width="732" height="500" src="{{this.url}}"
       allowfullscreen></iframe>
-    <label for="add-viewed">Add to viewed list</label>
+    <label for="add-viewed" class="added">Add to viewed list</label>
     <button class="add-viewed-btn" id="{{this._id}}">Add</button>
   </p>
   {{!-- <input type="checkbox" name="add-viewed" id="{{this._id}}"> --}}

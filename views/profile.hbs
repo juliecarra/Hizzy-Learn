@@ -29,22 +29,29 @@
 
 {{!-- {{/if}} --}}
 <div class="choice_profile">
-  <h4>Make your choices</h4>
-  <label for="level">Choose your level</label>
-  <select name="level" id="level-select" value="{{this.level}}">
-    <option value="" selected disabled hidden>Level</option>
-    <option value="Beginner">Beginner</option>
-    <option value="Intermediate">Intermediate</option>
-    <option value="Master">Master</option>
-  </select>
+  {{!--<h4>Make your choices</h4> --}}
   <br>
-  <label for="course">Choose your course</label>
+  <div class="move_level">
+    <label for="level" class="choices">Choose your level</label>
+    <select name="level" id="level-select" value="{{this.level}}">
+      <option value="" selected disabled hidden>Level</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Master">Master</option>
+    </select>
+  </div>
+  <br>
+
+  <label for="course" class="choices choices-course">Choose your course</label>
   <select name="course" id="course-select">
     <option value="" selected disabled hidden>Course</option>
     <option value="" disabled>Select your level first</option>
 
   </select>
-  <button id="follow-course-btn">Follow this course</button>
+  <br>
+  <div class="btn-course">
+    <button id="follow-course-btn">Follow this course</button>
+  </div>
 </div>
 <div id="msg-box"></div>
 
@@ -52,7 +59,8 @@
   <h1 class="descri">Hey, i'm {{user.username}}!</h1>
   <p class="userDescription">I am really excited to be part of <br> the Hizzy/Learn community. <br> I have chosen
     the
-    {{user.level}} level and <br> I am currently following the {{user.cursus}} cursus. <br> Let's the journey begin!
+    {{user.level}} level and <br> I am currently following the {{user.cursus}} cursus. <br> Let's the journey
+    begin!
   </p>
 </div>
 
