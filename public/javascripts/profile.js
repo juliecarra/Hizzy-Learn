@@ -26,6 +26,17 @@ function fillCourseList(evt) {
 function submitCourseChoice(evt) {
   console.log(levelChoiceList.value);
   console.log(courseChoiceList.value);
+  axiosHandler
+    .post("/profile-course-update", {
+      cursus: courseChoiceList.value
+    })
+    .then(res => {
+      console.log(res.data);
+      const newMsg = document.createElement("div");
+      newMsg.innerHTML = res.data.msg;
+      document.getElementById("msg-box").appendChild(newMsg);
+    })
+    .catch(err => console.log(err));
 }
 
 const levelChoiceList = document.getElementById("level-select");

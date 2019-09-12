@@ -11,7 +11,6 @@ router.post("/profile", uploader.single("profilePhoto"), (req, res) => {
   //   console.log(req.session.passport.user);
   const avatar = req.file.secure_url;
   const userId = req.session.passport.user;
-
   userModel
     .findByIdAndUpdate(userId, { profilePhoto: avatar })
     .then(dbRes => {
@@ -32,6 +31,19 @@ router.post("/course-list", (req, res) => {
     .then(dbRes => {
       // console.log(dbRes);
       res.send(dbRes);
+    })
+    .catch(err => console.log(err));
+});
+
+router.post("/profile-course-update", (req, res) => {
+  console.log(req.body);
+  console.log(req.user);
+  userModel
+    .findOneAndUpdate({ _id: req.user._id }, req.body)
+    .then(dbRes => {
+      console.log(dbRes);
+      const msg = { msg: "Course selected" };
+      res.send(msg);
     })
     .catch(err => console.log(err));
 });
