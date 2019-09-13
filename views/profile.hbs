@@ -56,11 +56,19 @@
 <div id="msg-box"></div>
 
 <div class="descr">
-  <h1 class="descri">Hey, i'm {{user.username}}!</h1>
-  <p class="userDescription">I am really excited to be part of <br> the Hizzy/Learn community. <br> I have chosen
-    the
-    {{user.level}} level and <br> I am currently following the {{user.cursus}} cursus. <br> Let's the journey
-    begin!
+  <h1 class="descri">Hey, {{user.username}}!</h1>
+  <p class="userDescription">We are really excited you are part of <br> the Hizzy/Learn community. <br>
+    <div id="profile-course-text">
+      You have
+      {{#unless user.course}}
+      not picked a course yet.
+      {{/unless}}
+      {{#if user.level}}
+      chosen the <b>{{user.level}}</b> level and <br> are currently following the <b>{{user.course}}</b> course. <br>
+      Let the journey
+      begin!
+      {{/if}}
+    </div>
 </div>
 
 {{#if message }}

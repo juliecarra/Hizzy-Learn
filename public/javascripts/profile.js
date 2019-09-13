@@ -28,13 +28,18 @@ function submitCourseChoice(evt) {
   console.log(courseChoiceList.value);
   axiosHandler
     .post("/profile-course-update", {
-      course: courseChoiceList.value
+      course: courseChoiceList.value,
+      level: levelChoiceList.value
     })
     .then(res => {
-      console.log(res.data);
+      console.log("res : ", res);
       const newMsg = document.createElement("div");
-      newMsg.innerHTML = res.data.msg;
-      document.getElementById("msg-box").appendChild(newMsg);
+      newMsg.innerHTML = `You have chosen the <b>${res.data.level}</b> level and <br> are currently following the <b>${res.data.course}</b> course. <br>
+      Let the journey
+      begin!`;
+      const textArea = document.getElementById("profile-course-text");
+      textArea.innerHTML = "";
+      textArea.appendChild(newMsg);
     })
     .catch(err => console.log(err));
 }

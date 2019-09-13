@@ -41,9 +41,10 @@ router.post("/profile-course-update", (req, res) => {
   userModel
     .findOneAndUpdate({ _id: req.user._id }, req.body)
     .then(dbRes => {
-      // console.log(dbRes);
+      console.log("dbRES ::::", dbRes);
+      console.log("req body", req.body);
       const msg = { msg: "Course selected" };
-      res.send(msg);
+      res.send(req.body);
     })
     .catch(err => console.log(err));
 });
