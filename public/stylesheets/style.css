@@ -905,7 +905,8 @@ footer {
   margin-left: 30px;
 }
 
-h4 {
+h4,
+.text-video {
   font-family: "Lato", sans-serif;
   font-weight: 900;
   color: #4c4c4c;
@@ -958,7 +959,8 @@ h4 {
 
 /* VIDEO STYLE CSS */
 
-.current_course {
+.current_course,
+.current_video {
   background-image: linear-gradient(
     to right bottom,
     rgba(117, 83, 15, 0.3),
@@ -993,10 +995,29 @@ h4 {
   );
 }
 
-.added {
+.added,
+.removed {
   font-size: 20px;
-  margin-left: 41px;
+  margin-left: 693px;
   color: #a89565;
   font-weight: 900;
   font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+}
+
+.text-video {
+  width: 1366px;
+  margin-left: -129px;
+  height: 900px;
+  margin-top: -8px;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(117, 83, 15, 0.5),
+    rgba(189, 180, 163, 0.5)
+  );
+}
+
+.move_video {
+  margin-top: -551px;
+  margin-left: 28px;
 }

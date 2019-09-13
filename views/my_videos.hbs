@@ -1,9 +1,12 @@
-<h2>My videos</h2>
+<h2 class="current_video">My videos</h2>
 
-<p>Here you can find all the videos you watched</p>
+<p class="text-video">Here you can find all the videos you watched</p>
 
 {{#each viewedVideos}}
-<iframe class=" youtube-player" type="text/html" width="332" height="200" src="{{this.url}}" allowfullscreen></iframe>
-<label for="remove-viewed">Remove from viewed list</label>
-<button class="remove-viewed-btn" id="{{this._id}}">Remove</button>
+<div class="move_video">
+    <iframe class=" youtube-player" type="text/html" width="332" height="200" src="{{this.url}}"
+        allowfullscreen></iframe>
+    <label for="remove-viewed" class="removed">Remove from viewed list</label>
+    <button class="remove-viewed-btn" id="{{this._id}}">Remove</button>
+</div>
 {{/each}}
